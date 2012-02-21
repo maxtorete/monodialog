@@ -4,4 +4,3 @@ core = 7.x
 package = monobits
 
 dependencies[] = monodialog
-files[] = monodialog_example.module

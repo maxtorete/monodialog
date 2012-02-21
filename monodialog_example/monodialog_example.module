@@ -27,7 +27,7 @@
  */
 
 /**
- * Implements hook_menu()
+ * Implements hook_menu().
  */
 function monodialog_example_menu() {
 
@@ -128,7 +128,8 @@ function monodialog_example_menu() {
 /**
  * Shows the module's home page
  *
- * @return string HTML code of module home page
+ * @return string
+ *   HTML code of module home page
  */
 function monodialog_example_index_page() {
 
@@ -140,16 +141,18 @@ function monodialog_example_index_page() {
 
   /* Adds link to each example dialod with some Drupal magic on it.
    * The key here are the /nojs param and the attribute "class => use-ajax",
-   * because Drupal will replace /nojs with /ajax on any link with use-ajax class
-   * If JavaScript is not enabled, it will loads the page/form with an http request
+   * because Drupal will replace /nojs with /ajax on
+   * any link with use-ajax class
+   * If JavaScript is not enabled, it will loads
+   * the page/form with an http request
    */
   $output .= l(t('View Dialog Page'), 'monodialog_example/page/nojs', array('attributes' => array('class' => array('button', 'use-ajax'))));
   $output .= l(t('View Dialog Form'), 'monodialog_example/form/nojs', array('attributes' => array('class' => array('button', 'use-ajax'))));
-  $output .= l(t('View Dialog Update Content Form'), 'monodialog_example/form_update_content/nojs', 
+  $output .= l(t('View Dialog Update Content Form'), 'monodialog_example/form_update_content/nojs',
     array(
       'attributes' => array(
         'class' => array(
-          'button', 
+          'button',
           'use-ajax',
         ),
       ),
@@ -162,7 +165,8 @@ function monodialog_example_index_page() {
 /**
  * Shows a simple page
  *
- * @return string HTML output code
+ * @return string
+ *   HTML output code
  */
 function monodialog_example_page() {
 
@@ -175,7 +179,8 @@ function monodialog_example_page() {
 /**
  * Constructs the form array
  *
- * @return array Form array
+ * @return array
+ *   Form array
  */
 function monodialog_example_form() {
 
@@ -197,7 +202,7 @@ function monodialog_example_form() {
     '#default_value' => 'success',
   );
 
-  /* Submits the form via Ajax and replace the wrapper 
+  /* Submits the form via Ajax and replace the wrapper
    * container with the callback response.
    * It uses default MonoDialog callback function.
    */
@@ -239,7 +244,7 @@ function monodialog_example_form_submit($form, &$form_state) {
     return $form;
   }
 
-  /* Otherwise, adds a success message to 
+  /* Otherwise, adds a success message to
    * status for it uses on callback function.
    */
   drupal_set_message(t('Form has been submitted successfully'));
@@ -251,7 +256,8 @@ function monodialog_example_form_submit($form, &$form_state) {
  * Constructs the form array with the ability to update
  * parent page after a success response.
  *
- * @return array Form array
+ * @return array
+ *   Form array
  */
 function monodialog_example_update_content_form() {
 
@@ -301,7 +307,7 @@ function monodialog_example_update_content_form() {
  * @param array $form
  *   FormAPI array
  * @param array $form_state
- *    Form state after form submit
+ *   Form state after form submit
  *
  * @return array
  *   Drupal Ajax Framework commands with callback result
