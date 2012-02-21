@@ -4,9 +4,11 @@
  * @file
  * MonoDialog Example primary module file.
  *
- * This module provides some provides some examples on the usage of MonoDialog module
+ * This module provides some provides some examples on the
+ * usage of MonoDialog module
  *
- * Copyright (C) 2012  Juan Francisco Fernández Rodríguez (juanfr at gmail dot com)
+ * Copyright (C) 2012  Juan Francisco Fernández Rodríguez
+ * (juanfr at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +27,7 @@
  */
 
 /**
- * Implements hook_menu
+ * Implements hook_menu()
  */
 function monodialog_example_menu() {
 
@@ -57,7 +59,8 @@ function monodialog_example_menu() {
     'description' => 'Shows a dialog window with some html code in it.',
     // Calls the MonoDialog page function.
     'page callback' => 'monodialog_get_dialog_page',
-    /* Passes the function that will generate the HTML code to be displayed on the dialog
+    /* Passes the function that will generate the HTML code
+     * to be displayed on the dialog
      * as firts parameter, jQuery dialog options array as second one
      * and any argument that form function needed as extra params.
      */
@@ -78,15 +81,18 @@ function monodialog_example_menu() {
     'access callback' => TRUE,
   );
 
-  // JS menu path for example dialog form.
-  // It is similar to example dialog page but with monodialog_get_dialog_form page callback.
+  /* JS menu path for example dialog form.
+   * It is similar to example dialog page but with
+   * monodialog_get_dialog_form page callback.
+   */
   $items['monodialog_example/form/ajax'] = array(
     'type' => MENU_CALLBACK,
     'title' => 'MonoDialog Form Example',
     'description' => 'Shows a dialog window with a form in it.',
     // Calls the MonoDialog form function.
     'page callback' => 'monodialog_get_dialog_form',
-    /* Passes the function that will generate the form array to be displayed on the dialog
+    /* Passes the function that will generate the form
+     * array to be displayed on the dialog
      * as firts parameter, jQuery dialog options array as second one
      * and any argument that form function needed as extra params
      */
@@ -94,7 +100,7 @@ function monodialog_example_menu() {
     'access callback' => TRUE,
     'delivery callback' => 'ajax_deliver',
   );
-  
+
   // No JS menu path for example dialog form with update content.
   $items['monodialog_example/form_update_content'] = array(
     'type' => MENU_CALLBACK,
@@ -104,8 +110,8 @@ function monodialog_example_menu() {
     'page arguments' => array('monodialog_example_update_content_form'),
     'access callback' => TRUE,
   );
-  
-  // JS menu path for example dialog form with update content
+
+  // JS menu path for example dialog form with update content.
   $items['monodialog_example/form_update_content/ajax'] = array(
     'type' => MENU_CALLBACK,
     'title' => 'MonoDialog Form Update Content Example',
@@ -115,7 +121,7 @@ function monodialog_example_menu() {
     'access callback' => TRUE,
     'delivery callback' => 'ajax_deliver',
   );
-  
+
   return $items;
 }
 
@@ -137,11 +143,15 @@ function monodialog_example_index_page() {
    * because Drupal will replace /nojs with /ajax on any link with use-ajax class
    * If JavaScript is not enabled, it will loads the page/form with an http request
    */
-  $output .= l(t('View Dialog Page'),"monodialog_example/page/nojs", array('attributes' => array('class' => array('button', 'use-ajax'))));
-  $output .= l(t('View Dialog Form'),"monodialog_example/form/nojs", array('attributes' => array('class' => array('button', 'use-ajax'))));
-  $output .= l(t('View Dialog Update Content Form'),"monodialog_example/form_update_content/nojs", 
-    array('attributes' => array(
-      'class' => array('button', 'use-ajax'),
+  $output .= l(t('View Dialog Page'), 'monodialog_example/page/nojs', array('attributes' => array('class' => array('button', 'use-ajax'))));
+  $output .= l(t('View Dialog Form'), 'monodialog_example/form/nojs', array('attributes' => array('class' => array('button', 'use-ajax'))));
+  $output .= l(t('View Dialog Update Content Form'), 'monodialog_example/form_update_content/nojs', 
+    array(
+      'attributes' => array(
+        'class' => array(
+          'button', 
+          'use-ajax',
+        ),
       ),
     )
   );
@@ -170,12 +180,12 @@ function monodialog_example_page() {
 function monodialog_example_form() {
 
   $form = array();
-  
+
   // Adds a wrapper for callback function.
-  $form['#prefix'] =  '<div id="monodialog-example-form-wrapper">';
+  $form['#prefix'] = '<div id="monodialog-example-form-wrapper">';
   // Adds some html for final users.
-  $form['#prefix'] .=  '<h2>This is a form example.</h2>';
-  
+  $form['#prefix'] .= '<h2>This is a form example.</h2>';
+
   // Adds radio buttons to choose the validation response.
   $form['mode'] = array(
     '#type' => 'radios',
@@ -187,10 +197,12 @@ function monodialog_example_form() {
     '#default_value' => 'success',
   );
 
-  // Submits the form via Ajax and replace the wrapper container with the callback response.
-  // It uses default MonoDialog callback function.
+  /* Submits the form via Ajax and replace the wrapper 
+   * container with the callback response.
+   * It uses default MonoDialog callback function.
+   */
   $form['submit'] = array(
-    '#type' => 'submit', 
+    '#type' => 'submit',
     '#value' => t('Send'),
     '#ajax' => array(
       'callback' => 'monodialog_get_dialog_form_callback',
@@ -227,7 +239,9 @@ function monodialog_example_form_submit($form, &$form_state) {
     return $form;
   }
 
-  // Otherwise, adds a success message to status for it uses on callback function.
+  /* Otherwise, adds a success message to 
+   * status for it uses on callback function.
+   */
   drupal_set_message(t('Form has been submitted successfully'));
 
   return $form;
@@ -244,9 +258,9 @@ function monodialog_example_update_content_form() {
   $form = array();
 
   // Adds a wrapper for callback function.
-  $form['#prefix'] =  '<div id="monodialog-example-form-wrapper">';
+  $form['#prefix'] = '<div id="monodialog-example-form-wrapper">';
   // Adds some html for final users.
-  $form['#prefix'] .=  '<h2>This is a form example with update content after success.</h2>';
+  $form['#prefix'] .= '<h2>This is a form example with update content after success.</h2>';
 
   // Shows some kind of pet to choose.
   $form['pet'] = array(
@@ -261,7 +275,7 @@ function monodialog_example_update_content_form() {
 
   /* Submits the form via Ajax and replace the wrapper
    * container with the callback response.
-   * It uses a custom callback function to update parent page 
+   * It uses a custom callback function to update parent page
    * on success response.
    */
   $form['submit'] = array(
@@ -285,7 +299,9 @@ function monodialog_example_update_content_form() {
  * with extra arguments.
  *
  * @param array $form
+ *   FormAPI array
  * @param array $form_state
+ *    Form state after form submit
  *
  * @return array
  *   Drupal Ajax Framework commands with callback result
@@ -296,12 +312,12 @@ function monodialog_example_update_content_form_callback($form, &$form_state) {
   drupal_set_message(t('Form has been submitted successfully'));
 
   // Returns the default MonoDialog Callback with non default arguments.
-  return monodialog_get_dialog_form_callback($form, $form_state, 
+  return monodialog_get_dialog_form_callback($form, $form_state,
     // Adds css selector for parent pages wrapper.
-    '#monodialog-example-response-container', 
-    // Adds output generator function
+    '#monodialog-example-response-container',
+    // Adds output generator function.
     'monodialog_example_update_content_add_pet',
-    /* Adds all the arguments needed by output generator 
+    /* Adds all the arguments needed by output generator
      * function as extra arguments.
      */
     $form_state['values']['pet']);

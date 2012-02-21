@@ -2,3 +2,4 @@ name = MonoDialog
 description = Framework to open a modal dialog with jQuery
 core = 7.x
 package = monobits
+

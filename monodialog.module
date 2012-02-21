@@ -168,7 +168,7 @@ function _monodialog_get_dialog($html = '', $options = array()) {
   // Gets jQuery dialog options.
   $dialog_options = _monodialog_get_dialog_options($options);
 
-  // Adds a container for the dialog content only if it hasn't been added before.
+  // Adds a container for the dialog content if it hasn't been added before.
   $commands[] = ajax_command_append('body:not(.monodialog-processed)', '<div id="monodialog-dialog"><div id="monodialog-dialog-inner">' . theme('status_messages') . $html . '</div></div>');
   // Adds status messages and the html argument.
   $commands[] = ajax_command_replace('#monodialog-dialog-inner', '<div id="monodialog-dialog-inner">' . theme('status_messages') . $html . '</div>');
