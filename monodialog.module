@@ -7,19 +7,19 @@
  * This module provides some functions to help drupal developer on the use of
  * jQuery dialogs.
  *
- * Copyright (C) 2012  Juan Francisco Fernández Rodríguez 
+ * Copyright (C) 2012  Juan Francisco Fernández Rodríguez
  * (juanfr at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -49,7 +49,7 @@ function monodialog_get_dialog_page($page_id, $options = array()) {
   $args = array_slice($args, 2);
   // Initializes page html.
   $page = '';
-  
+
   // Checks if callback function is set and exists.
   if (!empty($page_id) && function_exists($page_id)) {
     // Sets the html of the wrapper with the callback function's output.
@@ -57,7 +57,7 @@ function monodialog_get_dialog_page($page_id, $options = array()) {
   }
   else {
     // If the functions doesn't exists, set an error message.
-    drupal_set_message(t('Function passed to MonoDialog doesn\'t exists.'), 'error');
+    drupal_set_message(t("Function passed to MonoDialog doesn't exists."), 'error');
   }
 
   return _monodialog_get_dialog($page, $options);
@@ -68,7 +68,7 @@ function monodialog_get_dialog_page($page_id, $options = array()) {
  * Opens a form with the FormAPI array returned by $form_id function.
  * It is intended to act as a Dialog replacement for drupal_get_form function,
  * and its usage is analogous to that core function.
- * It can be called on hook_menu 'page callback' with 
+ * It can be called on hook_menu 'page callback' with
  * 'page arguments' as arguments.
  *
  * @param string $form_id
@@ -87,10 +87,10 @@ function monodialog_get_dialog_form($form_id, $options = array()) {
   $args = func_get_args();
   // Removes $form_id and options from the arguments.
   $args = array_slice($args, 2);
-  // Gets array form
+  // Gets array form.
   $form_array = drupal_get_form($form_id, $args);
 
-  // Gets commands array
+  // Gets commands array.
   return _monodialog_get_dialog(drupal_render($form_array), $options);
 }
 
@@ -128,7 +128,7 @@ function monodialog_get_dialog_form_callback($form, &$form_state, $callback_wrap
 
   // Gets function args.
   $args = func_get_args();
-  // Remove regular args from the arguments and left only those added as extra args.
+  // Remove regular args left only those added as extra args.
   $args = array_slice($args, 4);
 
   // Initializes commands array.
@@ -146,11 +146,14 @@ function monodialog_get_dialog_form_callback($form, &$form_state, $callback_wrap
 }
 
 /**
- * Generate all the Drupal Ajax Framework commands needed to display an jQuery Dialog.
+ * Generate all the Drupal Ajax Framework commands needed to
+ * display an jQuery Dialog.
  * This function is for internal use only, it should not be called directly.
  *
  * @param string $html
+ *   HTML code to be displayed on the dialog
  * @param array $options
+ *   jQuery dialog plugin customized options
  */
 function _monodialog_get_dialog($html = '', $options = array()) {
 
@@ -162,7 +165,7 @@ function _monodialog_get_dialog($html = '', $options = array()) {
   // Removes $form_id and options from the arguments.
   $args = array_slice($args, 2);
 
-  // Gets jQuery dialog options
+  // Gets jQuery dialog options.
   $dialog_options = _monodialog_get_dialog_options($options);
 
   // Adds a container for the dialog content only if it hasn't been added before.
@@ -183,8 +186,11 @@ function _monodialog_get_dialog($html = '', $options = array()) {
  * Returns default options for jQuery Dialog plugin.
  * This function is for internal use only, it should not be called directly.
  *
- * @param string $html
  * @param array $options
+ *   jQuery dialog plugin customized options
+ *
+ * @return array
+ *   jQuery dialog options
  */
 function _monodialog_get_dialog_options($options = array()) {
 
@@ -193,11 +199,11 @@ function _monodialog_get_dialog_options($options = array()) {
 
   // Sets default options.
   $default_options = array(
-    'autoOpen' => true,
-    'modal' => true,
+    'autoOpen' => TRUE,
+    'modal' => TRUE,
     'hide' => 'slide',
-    'dragabble' => true,
-    'resizable' => true,
+    'dragabble' => TRUE,
+    'resizable' => TRUE,
     'width' => 600,
     'title' => t('MonoDialog'),
   );

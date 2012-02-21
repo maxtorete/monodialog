@@ -234,7 +234,8 @@ function monodialog_example_form_submit($form, &$form_state) {
 }
 
 /**
- * Constructs the form array with the ability to update parent page after a success response
+ * Constructs the form array with the ability to update
+ * parent page after a success response.
  *
  * @return array Form array
  */
@@ -254,21 +255,24 @@ function monodialog_example_update_content_form() {
     '#options' => array(
       'rabbit' => t('Rabbit'),
       'cat' => t('Cat'),
-  ),
+    ),
     '#default_value' => 'rabbit',
   );
 
-  // Submits the form via Ajax and replace the wrapper container with the callback response.
-  // It uses a custom callback function to update parent page on success response.
+  /* Submits the form via Ajax and replace the wrapper
+   * container with the callback response.
+   * It uses a custom callback function to update parent page 
+   * on success response.
+   */
   $form['submit'] = array(
-    '#type' => 'submit', 
+    '#type' => 'submit',
     '#value' => t('Send'),
     '#ajax' => array(
       'callback' => 'monodialog_example_update_content_form_callback',
       'wrapper' => 'monodialog-example-form-wrapper',
       'effect' => 'fade',
       'name' => 'submit',
-  ),
+    ),
   );
 
   $form['#suffix'] = '</div>';
@@ -297,12 +301,15 @@ function monodialog_example_update_content_form_callback($form, &$form_state) {
     '#monodialog-example-response-container', 
     // Adds output generator function
     'monodialog_example_update_content_add_pet',
-    // Adds all the arguments needed by output generator function as extra arguments.
+    /* Adds all the arguments needed by output generator 
+     * function as extra arguments.
+     */
     $form_state['values']['pet']);
 }
 
 /**
  * Generates some HTML code that will be shown to user after a success response
+ *
  * @param string $pet
  *   Pet string to be added
  *
