@@ -15,5 +15,3 @@ The module has a third function to use as form callback with some advanced
 features but with the same SIMPLE and EASY usage basis.
 
 You can find an example module in monodialog_example folder.
-
-
