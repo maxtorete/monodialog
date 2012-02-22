@@ -2,7 +2,7 @@
 /**
 * Implements hook_install().
 */
-function mymodule_install() {
+function monodialog_example_install() {
   drupal_set_message(st('You can find some examples of MonoDialog results on !link.',
     array( '!link' => l(st('its example page'),  'monodialog_example'))
   ));
