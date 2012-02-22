@@ -46,7 +46,8 @@ Add a menu callback for your form on your module hook_menu function
   );
 ?>
 
-Adds an ajaxed link (it must have /nojs on path and use-ajax class)
+Adds an ajaxed link to it (it must have /nojs on path and
+use-ajax class) on a page, block...
 
 <?php
   l(t('View Dialog Form'), 'monodialog_example/form/nojs', array(
