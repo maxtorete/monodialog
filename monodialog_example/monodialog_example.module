@@ -12,7 +12,7 @@ function monodialog_example_permission() {
   return array(
     'monodialog example view' => array(
       'title' => t('Views example pages'),
-	    'description' => t('User with this access will see the MonoDialog Example pages.'),
+      'description' => t('User with this access will see the MonoDialog Example pages.'),
     ),
   );
 }
@@ -261,7 +261,7 @@ function monodialog_example_update_content_form() {
   // Adds a wrapper for callback function.
   $form['#prefix'] = '<div id="monodialog-example-form-wrapper">';
   // Adds some html for final users.
-  $form['#prefix'] .= '<h2>'. t('This is a form example with update content after success.') . '</h2>';
+  $form['#prefix'] .= '<h2>' . t('This is a form example with update content after success.') . '</h2>';
 
   // Shows some kind of pet to choose.
   $form['pet'] = array(
@@ -333,5 +333,5 @@ function monodialog_example_update_content_form_callback($form, &$form_state) {
  */
 function monodialog_example_update_content_add_pet($pet) {
   // Shows a tiny message to user with the new pet.
-  return '<h2>' .t('You have adopted a little @pet', array('@pet' => $pet)) . '</h2>';
+  return '<h2>' . t('You have adopted a little @pet', array('@pet' => $pet)) . '</h2>';
 }
