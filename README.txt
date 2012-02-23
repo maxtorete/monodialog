@@ -43,7 +43,8 @@ Add a menu callback for your form on your module hook_menu function
       'title' => t('MonoDialog Form Example'))),
     // Only users with the propper rights should see the page.
     'access callback' => 'user_access',
-    'access arguments' => array('monodialog example view')
+    'access arguments' => array('monodialog example view'),
+    // Lets drupal executes our generateds Ajax Framework commands.
     'delivery callback' => 'ajax_deliver',
   );
 ?>
