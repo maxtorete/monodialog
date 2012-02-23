@@ -41,7 +41,9 @@ Add a menu callback for your form on your module hook_menu function
     // and any argument that form function needed as extra params.
     'page arguments' => array('monodialog_example_form', array(
       'title' => t('MonoDialog Form Example'))),
-    'access callback' => TRUE,
+    // Only users with the propper rights should see the page.
+    'access callback' => 'user_access',
+    'access arguments' => array('monodialog example view')
     'delivery callback' => 'ajax_deliver',
   );
 ?>
