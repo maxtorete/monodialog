@@ -64,10 +64,11 @@ function monodialog_get_dialog_form($form_id, $options = array()) {
 
   // Gets function args.
   $args = func_get_args();
-  // Removes $form_id and options from the arguments.
+  // Removes $options from arguments.
   $args = array_slice($args, 2);
+  array_unshift($args, $form_id);
   // Gets array form.
-  $form_array = drupal_get_form($form_id, $args);
+  $form_array = call_user_func_array('drupal_get_form', $args);
 
   // Gets commands array.
   return _monodialog_get_dialog(drupal_render($form_array), $options);
